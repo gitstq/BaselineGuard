@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "baselineguard"
+version = "1.0.0"
+description = "Zero-dependency, offline-first Web platform Baseline guard and AI coding-agent context generator."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "gitstq" }]
+keywords = ["baseline", "web-platform", "browser-compatibility", "static-analysis", "coding-agent", "cli", "ci"]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Software Development :: Quality Assurance",
+  "Topic :: Internet :: WWW/HTTP",
+]
+dependencies = []
+
+[project.scripts]
+baselineguard = "baselineguard.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/gitstq/BaselineGuard"
+Repository = "https://github.com/gitstq/BaselineGuard"
+Issues = "https://github.com/gitstq/BaselineGuard/issues"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+baselineguard = ["data/*.json"]

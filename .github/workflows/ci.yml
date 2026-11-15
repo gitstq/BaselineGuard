@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: tests (py${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Unit tests
+        run: bash scripts/test.sh
+      - name: Build single-file zipapp
+        run: bash scripts/build.sh
+      - name: Smoke test the artefact
+        run: python3 dist/baselineguard.pyz rules validate src/baselineguard/data/rules.json
+
+  self-scan:
+    name: self scan (dogfooding)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Scan the sample sources with the tool itself
+        run: |
+          PYTHONPATH=src python3 -m baselineguard scan tests/fixtures \
+            --format markdown --fail-on none
+      - name: Verify generated agent context is reproducible
+        run: |
+          PYTHONPATH=src python3 -m baselineguard context --out /tmp/AGENTS.md
+          PYTHONPATH=src python3 -m baselineguard context --out /tmp/AGENTS.md | grep unchanged

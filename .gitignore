@@ -1,0 +1,39 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+*.pyz
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# --- Virtual environments & local config (never commit credentials) ---
+.venv/
+venv/
+env/
+.env
+.env.*
+*.local
+*.secret
+secrets.json
+config.local.json
+
+# --- Editors / OS ---
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# --- Generated artefacts ---
+baselineguard-report.json
+baselineguard-report.md
+AGENTS.generated.md
+CLAUDE.generated.md
+.cursorrules.generated
