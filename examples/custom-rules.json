@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "name": "example-extended-ruleset",
+  "version": "1.0.0",
+  "mode": "extend",
+  "description": "Example: tighten one built-in rule and add one project-specific rule. Keep the 9 required fields on every rule.",
+  "rules": [
+    {
+      "id": "css-nesting",
+      "name": "Native CSS Nesting (banned in this project)",
+      "category": "css",
+      "status": "deprecated",
+      "baseline_year": null,
+      "applies_to": ["css", "markup"],
+      "patterns": ["(?m)^\\s*&\\s*[:.{]"],
+      "suggestion": "This project compiles with a preprocessor; never use native nesting in shipped CSS.",
+      "reference": "https://developer.mozilla.org/docs/Web/CSS/CSS_nesting"
+    },
+    {
+      "id": "project-legacy-widget",
+      "name": "Legacy jQuery widget bootstrap",
+      "category": "script",
+      "status": "deprecated",
+      "baseline_year": null,
+      "applies_to": ["script"],
+      "patterns": ["legacyWidget\\.init\\s*\\("],
+      "suggestion": "Migrate to the Web Component in src/components/.",
+      "reference": "https://example.com/internal/migration-guide"
+    }
+  ]
+}
