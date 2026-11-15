@@ -1,0 +1,21 @@
+:root {
+  --brand: #06c;
+}
+
+.layout {
+  display: flex;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+}
+
+.card:has(img) {
+  margin-inline: auto;
+}
+
+.hero {
+  view-transition-name: hero;
+}
+
+@layer components {
+  .badge { color: var(--brand); }
+}

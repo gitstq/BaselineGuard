@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    .card { display: grid; grid-template-columns: 1fr 1fr; }
+    @container (min-width: 400px) { .card { color: color-mix(in srgb, red, blue); } }
+    /* :has(span) is intentionally inside a comment */
+  </style>
+</head>
+<body>
+  <marquee behavior="scroll">legacy ticker</marquee>
+  <center>legacy centering</center>
+  <img src="logo.png" loading="lazy" alt="logo">
+  <!-- <font color="red">commented-out legacy tag</font> -->
+  <script>
+    const el = document.querySelector('.card');
+    /* document.write('this is inside a comment') */
+    fetch('/api/items').then(r => r.json());
+    if (!document.startViewTransition) { el.at(0); }
+    const url = "https://example.com/api"; // keep URLs intact
+  </script>
+</body>
+</html>
