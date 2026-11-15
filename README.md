@@ -216,7 +216,7 @@ baselineguard rules list --rules examples/custom-rules.json
 }
 ```
 
-完整字段说明见 [examples/README.md](examples/README.md)。九个字须齐全，`patterns` 为 Python `re` 正则（JSON 中反斜杠要双写），`validate` 会检查状态枚举、正则合法性、ID 唯一性与重复。
+完整字段说明见 [examples/README.md](examples/README.md)。九个字段缺一不可，`patterns` 为 Python `re` 正则（JSON 中反斜杠要双写），`validate` 会检查状态枚举、正则合法性、ID 唯一性与重复。
 
 ### 4.4 集成进 CI（可直接复制）
 
