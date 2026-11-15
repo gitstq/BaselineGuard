@@ -9,7 +9,7 @@ on:
 jobs:
   test:
     name: tests (py${{ matrix.python-version }})
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
@@ -28,7 +28,7 @@ jobs:
 
   self-scan:
     name: self scan (dogfooding)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - name: Scan the sample sources with the tool itself
